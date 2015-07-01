@@ -1,19 +1,19 @@
 import socket
 
-iphost = raw_input('Introduce la IP Servidor: ')
-nameuser = raw_input('Nombre a utilizar: ')
+iphost = raw_input('Enter the Server IP: ')
+nameuser = raw_input('Username: ')
 
 socket = socket.socket()
 socket.connect((iphost, 6969))
-print "INF: puedes escribir 'close' sin comillas para cerrar."
+print "INF: you can write 'close' without quotes to close."
 
 while True:
-	mensaje = raw_input('Mensaje: ')
+	mensaje = raw_input('Message: ')
 	datos= nameuser + ": " + mensaje
 	socket.send(datos)
 	if mensaje == 'close':
 		socket.close()
 
-	print "Esperando mensaje..."
+	print "Awaiting message..."
 	datos = socket.recv(1000)
 	print datos
